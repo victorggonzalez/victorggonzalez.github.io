@@ -1,5 +1,5 @@
 "use client";
-import { SiGithub, SiMailgun, SiLinkerd } from '@icons-pack/react-simple-icons';
+import { SiGithub, SiLinkerd } from '@icons-pack/react-simple-icons';
 import Link from "next/link";
 
 const socials = [
