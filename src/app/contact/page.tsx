@@ -1,16 +1,16 @@
 "use client";
-import { SiGithub, SiLinkerd } from '@icons-pack/react-simple-icons';
 import Link from "next/link";
+import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons"
 
 const socials = [
 	{
-		icon: <SiLinkerd color='#61DAFB' size={24} />,
+		icon: <LinkedInLogoIcon />,
 		href: "https://www.linkedin.com/in/victorgonzalezgonzalez/",
 		label: "Linkedin",
 		handle: "in/victorgonzalezgonzalez",
 	},
 	{
-        icon: <SiGithub color='#61DAFB' size={24} />,
+        icon: <GitHubLogoIcon />,
 		href: "https://github.com/victorggonzalez",
 		label: "GitHub",
 		handle: "github.com/victorggonzalez",
