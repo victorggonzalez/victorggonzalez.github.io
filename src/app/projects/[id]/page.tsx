@@ -1,6 +1,6 @@
+import { use } from "react";
 import Container from "@/components/Container";
-import { Mdx } from "@/components/mdx";
-import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 
 export async function generateStaticParams() {
@@ -12,11 +12,12 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProjectPage({ params }: { params: { id: string } }) {
+export default function ProjectPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params);
 
   return (
     <Container>
-      <h1>Project: {params.id}</h1>
+      <h1>Project: {id}</h1>
       <main>
         <Card>
           <CardHeader>

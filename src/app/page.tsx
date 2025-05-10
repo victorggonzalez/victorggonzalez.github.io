@@ -1,12 +1,6 @@
 import Link from "next/link";
 import classes from "./page.module.css";
 import { NavBar } from "@/components/NavBar";
-import { Container } from "@/components/Container";
-
-const navigation = [
-  { name: "Projects", href: "/projects" },
-  { name: "Contact", href: "/contact" },
-];
 
 export default function Home() {
   return (
