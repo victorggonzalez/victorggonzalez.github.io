@@ -31,5 +31,5 @@ export function getAllCategories() {
 }
 
 export function getProjectsByCategory(category: string) {
-  return getAllProjects().filter(p => p.meta.category === category);
+  return getAllProjects().filter(p => p.meta.category.includes(category));
 }

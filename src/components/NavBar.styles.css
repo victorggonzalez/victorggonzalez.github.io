@@ -35,3 +35,16 @@
 	min-width: max-content;
 }
 
+.nav-link {
+	transition: background 0.2s, color 0.2s;
+	border-radius: 0.5rem;
+	padding: 0.5rem 1rem;
+	background: transparent;
+}
+
+.nav-link-active {
+	background: white;
+	color: black;
+	font-weight: bold;
+	box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
