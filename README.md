@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Portfolio – Next.js + MDX
+This is a personal portfolio web application built with Next.js and MDX.
+Projects are managed as individual MDX files, making it easy to add, edit, and maintain project content with rich formatting and metadata.
 
-## Getting Started
+## Project Overview
+The site dynamically generates project category pages (e.g., /projects/ai, /projects/full-stack) and displays all projects in that category.
 
-First, run the development server:
+## Tech Stack
+- Framework: Next.js 13+ (App Router)
+- Styling: Tailwind CSS
+- Markdown/MDX: MDX, gray-matter
+- Icons: Lucide React
+- UI Components: Custom, with shadcn/ui patterns
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Key Features
+1. **MDX-based Projects**: Each project is a Markdown/MDX file with frontmatter for metadata (title, description, category, etc.).
+2. **Category Pages**: Dynamic routes for each project category (e.g., /projects/ai), listing all projects in that category.
+3. **Rich Content**: Projects can include code blocks, images, and custom React components via MDX.
+4. **Responsive Design**: Clean, modern, and mobile-friendly UI.
+5. **Easy Content Management**: Add or edit projects by simply updating files in content/projects/.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup and Deployment
+1. **Install Dependencies**
+    `npm run install`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+2. **Add Your Projects** 
+    Place your project MDX files in `content/projects/` folder.
+    Each file should have frontmatter like:
+    ```
+    ---
+    title: "My Project"
+    description: "A cool project."
+    category: "ai"
+    technologies: ["Next.js", "TypeScript"]
+    githubUrl: "https://github.com/yourusername/my-project"
+    liveUrl: "https://myproject.com"
+    features: ["Random feature #1"]
+    ---
+    Project details here...
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. **Run the Development Server**
+    `npm run dev`
+    Visit http://localhost:3000 to view your site.
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Important Notes
+- Static Export: The app uses output: 'export' in next.config.js for static site generation.
+- Image optimization is disabled (images.unoptimized: true).
+- MDX Content: All project content and metadata are managed via MDX files in content/projects/.
+- Category Routing: The [id] route under /projects/ matches the category field in your MDX frontmatter.
+- Adding Projects: To add a new project, simply create a new .mdx file in content/projects/ with the appropriate frontmatter.
+- Extensibility: You can add custom MDX components or extend the metadata as needed.
