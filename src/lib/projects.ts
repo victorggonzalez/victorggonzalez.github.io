@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 
 const projectsDirectory = path.join(process.cwd(), 'content/projects');
+const categories = ["full-stack", "ai", "frontend"];
 
 export function getProjectSlugs() {
   return fs.readdirSync(projectsDirectory).filter(file => file.endsWith('.mdx'));
@@ -26,9 +27,7 @@ export function getAllProjects() {
 }
 
 export function getAllCategories() {
-  const projects = getAllProjects();
-  // Get unique categories
-  return [...new Set(projects.map(p => p.meta.category))];
+  return categories;
 }
 
 export function getProjectsByCategory(category: string) {

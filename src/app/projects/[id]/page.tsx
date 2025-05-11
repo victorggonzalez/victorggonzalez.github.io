@@ -19,7 +19,8 @@ export default function ProjectPage({
 }) {
   const { id } = use(params);
   const projects = getProjectsByCategory(id);
-  if (!projects) {
+  console.log(projects)
+  if (!projects.length) {
     return (
       <Container>
         <main>
