@@ -1,0 +1,37 @@
+.NavigationMenuContent {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	animation-duration: 250ms;
+	animation-timing-function: ease;
+}
+.NavigationMenuContent[data-motion="from-start"] {
+	animation-name: enterFromLeft;
+}
+.NavigationMenuContent[data-motion="from-end"] {
+	animation-name: enterFromRight;
+}
+.NavigationMenuContent[data-motion="to-start"] {
+	animation-name: exitToLeft;
+}
+.NavigationMenuContent[data-motion="to-end"] {
+	animation-name: exitToRight;
+}
+@media only screen and (min-width: 600px) {
+	.NavigationMenuContent {
+		width: auto;
+	}
+}
+
+/* Target the dropdown container */
+.absolute.top-full.left-0 {
+	left: 50% !important;
+	transform: translateX(-50%) !important;
+}
+
+/* Ensure the content inside is properly centered */
+.absolute.top-full.left-0 > div {
+	min-width: max-content;
+}
+

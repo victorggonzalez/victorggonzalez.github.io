@@ -9,6 +9,7 @@ import {
   NavigationMenuTrigger,
 } from "./ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import "./NavBar.styles.css"
 
 export function NavBar() {
   return (
@@ -17,13 +18,10 @@ export function NavBar() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Projects</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid gap-3 p-4 md:w-[100px] lg:w-[400px] lg:grid-cols-[.75fr_1fr] top-full">
-              <ListItem href="/projects/full-stack" title="Fullstack">
-                Full stack projects
-              </ListItem>
-              <ListItem href="/projects/ai" title="AI">
-                Ai projects
-              </ListItem>
+            <ul className="flex gap-3 p-4 w-max">
+              <ListItem href="/projects/frontend" title="Frontend"/>
+              <ListItem href="/projects/full-stack" title="Fullstack"/>
+              <ListItem href="/projects/ai" title="AI"/>
             </ul>
           </NavigationMenuContent>
         </NavigationMenuItem>
