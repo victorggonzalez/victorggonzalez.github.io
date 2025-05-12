@@ -21,7 +21,7 @@ export default function ProjectPage({
   if (!projects.length) {
     return (
       <main>
-        <h1 className="text-4xl font-bold">No projects found</h1>
+        <h1 className="text-4xl font-bold">More projects coming soon</h1>
       </main>
     );
   }
