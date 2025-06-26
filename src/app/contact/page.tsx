@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
 import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import ContactForm from "@/components/ContactForm";
 
 const socials = [
   {
@@ -49,6 +50,7 @@ export default function Contact() {
               </Link>
             </div>
           ))}
+          <ContactForm />
         </div>
       </main>
     </div>
