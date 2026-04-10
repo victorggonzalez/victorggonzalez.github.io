@@ -1,43 +1,6 @@
 import { NavBar } from "@/components/NavBar";
+import { getCareerJourney, getCertifications, getEducation } from "@/lib/profileSections";
 import Link from "next/link";
-
-const journey = [
-  {
-    period: "Aug 2025 - Present",
-    company: "Responsibly",
-    role: "Software Engineer",
-    highlight:
-      "Building semantic ESG intelligence workflows with RAG, NLP scoring systems, and product-grade Next.js delivery.",
-  },
-  {
-    period: "Oct 2022 - Jun 2025",
-    company: "Nexthink",
-    role: "Software Engineer",
-    highlight:
-      "Shipped core alerts features, contributed to genAI assistant initiatives, and led cross-team UX consistency efforts.",
-  },
-  {
-    period: "Feb 2022 - Sep 2022",
-    company: "Graasp",
-    role: "Software Engineer",
-    highlight:
-      "Built a DevOps orchestration toolkit reducing deployment time by 40% across frontend and backend pipelines.",
-  },
-  {
-    period: "Apr 2021 - Aug 2021",
-    company: "NTT DATA",
-    role: "Software Engineer Intern",
-    highlight:
-      "Developed and optimized frontend and backend features using Angular and Java from design through testing.",
-  },
-  {
-    period: "May 2020 - Dec 2020",
-    company: "IBM",
-    role: "Hybrid Cloud Intern",
-    highlight:
-      "Contributed to the 5G Maritime proof of concept with Python image processing and ML-enabled geolocation workflows.",
-  },
-];
 
 const focusAreas = [
   "AI Product Engineering",
@@ -47,6 +10,10 @@ const focusAreas = [
 ];
 
 export default function Home() {
+  const journey = getCareerJourney();
+  const education = getEducation();
+  const certifications = getCertifications();
+
   return (
     <div className="site-shell">
       <NavBar />
@@ -103,6 +70,32 @@ export default function Home() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section className="frosted-card p-8 md:p-10">
+          <p className="section-subtitle">Education</p>
+          <div className="mt-6 space-y-4">
+            {education.map((item) => (
+              <article key={`${item.school}-${item.degree}`} className="border-l border-white/15 pl-5">
+                <h3 className="text-base font-semibold text-white">{item.school}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-zinc-300">{item.degree}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="frosted-card p-8 md:p-10">
+          <p className="section-subtitle">Certifications</p>
+          <ul className="mt-6 space-y-3">
+            {certifications.map((item) => (
+              <li
+                key={`${item.title}-${item.issuer}-${item.date}`}
+                className="border-l border-white/15 pl-5 text-sm leading-relaxed text-zinc-300"
+              >
+                {item.title} ({item.issuer}, {item.date})
+              </li>
+            ))}
+          </ul>
         </section>
       </main>
     </div>
