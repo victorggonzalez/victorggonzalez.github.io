@@ -15,16 +15,17 @@ features: [
 
 ## Overview
 
-I built this portfolio as a content-driven application where each project lives as a standalone MDX file. The objective was to keep updates frictionless while still delivering a premium interface and professional narrative.
+I built this portfolio as a content-driven application where projects, career journey, education, and certifications live as standalone MDX files. The objective was to keep updates frictionless while delivering a premium interface and a consistent professional narrative across pages and AI interactions.
 
 ## What I focused on
 
-- Project content can evolve quickly without touching component logic.
-- MDX gives me structured metadata and rich storytelling in one place.
-- The architecture supports clean categorization by frontend, full stack, and AI.
+- Unified source-of-truth: MDX content powers both UI sections and the Digital Twin knowledge context.
+- High-end UI/UX: enterprise-grade visual polish with an edgy style and responsive behavior.
+- Production-ready AI chat: global chatbot overlay, clear message hierarchy, and markdown-rendered responses.
+- Practical deployment strategy: static frontend on GitHub Pages with serverless API on Vercel.
 
 ## Technical details
 
-- App Router implementation with Next.js and TypeScript.
-- Reusable UI primitives and utility-first styling for consistency.
-- Static project discovery by reading MDX files and parsing frontmatter metadata.
+- Next.js App Router implementation with TypeScript and reusable UI primitives.
+- MDX discovery and frontmatter parsing for project and profile content domains.
+- Digital Twin endpoint integrated with OpenRouter (`openai/gpt-oss-120b:free`).
