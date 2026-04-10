@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useMemo, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
 import { Bot, SendHorizonal, User2, X } from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -18,7 +18,6 @@ const INITIAL_MESSAGES: Message[] = [
   },
 ];
 
-const STORAGE_KEY = "digital-twin-messages";
 const DIGITAL_TWIN_API_BASE = process.env.NEXT_PUBLIC_DIGITAL_TWIN_API_URL?.replace(/\/+$/, "") ?? "";
 const STARTER_PROMPTS = [
   "What impact did Victor have at Nexthink?",
@@ -38,23 +37,6 @@ export default function DigitalTwinWidget() {
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    const stored = window.localStorage.getItem(STORAGE_KEY);
-    if (!stored) return;
-    try {
-      const parsed = JSON.parse(stored) as Message[];
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        setMessages(parsed);
-      }
-    } catch {
-      // Ignore invalid local storage payload.
-    }
-  }, []);
-
-  useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(messages));
-  }, [messages]);
 
   const canSend = useMemo(() => !loading && input.trim().length > 0, [input, loading]);
   const hasUserMessages = useMemo(
