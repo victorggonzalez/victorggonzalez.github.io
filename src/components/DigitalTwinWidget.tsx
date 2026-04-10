@@ -19,11 +19,18 @@ const INITIAL_MESSAGES: Message[] = [
 ];
 
 const STORAGE_KEY = "digital-twin-messages";
+const DIGITAL_TWIN_API_BASE = process.env.NEXT_PUBLIC_DIGITAL_TWIN_API_URL?.replace(/\/+$/, "") ?? "";
 const STARTER_PROMPTS = [
   "What impact did Victor have at Nexthink?",
   "Which technologies does Victor use most?",
   "Summarize Victor's current role in two bullets.",
 ];
+
+function getDigitalTwinEndpoint() {
+  if (!DIGITAL_TWIN_API_BASE) return "/api/digital-twin";
+  if (DIGITAL_TWIN_API_BASE.endsWith("/api/digital-twin")) return DIGITAL_TWIN_API_BASE;
+  return `${DIGITAL_TWIN_API_BASE}/api/digital-twin`;
+}
 
 export default function DigitalTwinWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -65,15 +72,25 @@ export default function DigitalTwinWidget() {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/digital-twin", {
+      const response = await fetch(getDigitalTwinEndpoint(), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ messages: nextMessages }),
       });
+      const contentType = response.headers.get("content-type") ?? "";
+      const isJson = contentType.includes("application/json");
+      const data = isJson ? ((await response.json()) as { reply?: string; error?: string }) : null;
 
-      const data = (await response.json()) as { reply?: string; error?: string };
-      if (!response.ok || !data.reply) {
-        throw new Error(data.error ?? "Unable to get a response.");
+      if (!response.ok) {
+        if (response.status === 405) {
+          throw new Error(
+            "Digital Twin is unavailable on this static deployment. Use a server-capable host (for example Vercel) for AI chat."
+          );
+        }
+        throw new Error(data?.error ?? "Unable to get a response.");
+      }
+      if (!data?.reply) {
+        throw new Error("Unable to get a response.");
       }
 
       setMessages((prev) => [...prev, { role: "assistant", content: data.reply! }]);
