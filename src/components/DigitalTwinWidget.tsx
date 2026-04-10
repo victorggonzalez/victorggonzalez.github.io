@@ -84,7 +84,7 @@ export default function DigitalTwinWidget() {
       if (!response.ok) {
         if (response.status === 405) {
           throw new Error(
-            "Digital Twin is unavailable on this static deployment. Use a server-capable host (for example Vercel) for AI chat."
+            "Digital Twin is unavailable on this deployment."
           );
         }
         throw new Error(data?.error ?? "Unable to get a response.");
