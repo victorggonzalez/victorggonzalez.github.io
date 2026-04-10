@@ -7,23 +7,21 @@ import { Project } from "@/lib/projects";
 
 const ProjectItem = ({ slug, meta, content }: Project) => {
   return (
-    <div key={slug}>
-      <div>
-        <Card>
-          <CardHeader>
-            <h1 className="text-4xl font-bold">{meta.title}</h1>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              {meta.description}
-            </p>
+    <article key={slug} className="frosted-card overflow-hidden">
+      <div className="grid gap-8 p-6 md:grid-cols-[1.3fr_1fr] md:p-8">
+        <Card className="border-white/10 bg-zinc-950/25">
+          <CardHeader className="space-y-2">
+            <h2 className="text-3xl font-semibold tracking-tight text-white">{meta.title}</h2>
+            <p className="text-base text-zinc-300">{meta.description}</p>
           </CardHeader>
           <CardContent>
             <div>
               {meta.technologies && (
                 <div className="mb-4">
-                  <h3 className="text-xl font-semibold mb-3">Technologies</h3>
+                  <h3 className="mb-3 text-lg font-semibold text-white">Technologies</h3>
                   <div className="flex flex-wrap gap-2">
                     {meta.technologies?.map((tech: string) => (
-                      <Badge key={tech} variant="secondary">
+                      <Badge key={tech} variant="secondary" className="bg-white/10 text-zinc-100">
                         {tech}
                       </Badge>
                     ))}
@@ -31,13 +29,10 @@ const ProjectItem = ({ slug, meta, content }: Project) => {
                 </div>
               )}
               <div className="mb-4">
-                <h3 className="text-xl font-semibold mb-3">Key Features</h3>
-                <ul className="list-disc list-inside space-y-2">
+                <h3 className="mb-3 text-lg font-semibold text-white">Key Features</h3>
+                <ul className="list-disc space-y-2 pl-4">
                   {meta.features?.map((feature: string) => (
-                    <li
-                      key={feature}
-                      className="text-gray-600 dark:text-gray-300"
-                    >
+                    <li key={feature} className="text-zinc-300">
                       {feature}
                     </li>
                   ))}
@@ -52,11 +47,11 @@ const ProjectItem = ({ slug, meta, content }: Project) => {
                       rel="noopener noreferrer"
                     >
                       <Github className="mr-2 h-4 w-4" />
-                      View Code
+                      View code
                     </a>
                   </Button>
                 )}
-                {meta.liveUrl && (
+                {meta.liveUrl && meta.liveUrl.length > 0 && (
                   <Button asChild>
                     <a
                       href={meta.liveUrl}
@@ -72,11 +67,11 @@ const ProjectItem = ({ slug, meta, content }: Project) => {
             </div>
           </CardContent>
         </Card>
+        <div className="mdx-content max-w-none rounded-xl border border-white/10 bg-zinc-950/25 p-6 text-zinc-200">
+          <MDXRemote source={content} />
+        </div>
       </div>
-      <div>
-        <MDXRemote source={content} />
-      </div>
-    </div>
+    </article>
   );
 };
 

@@ -5,11 +5,21 @@ import matter from "gray-matter";
 const projectsDirectory = path.join(process.cwd(), "content/projects");
 const categories = ["full-stack", "ai", "frontend"];
 
+export type ProjectMeta = {
+  title?: string;
+  category?: string[];
+  description?: string;
+  technologies?: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  date?: string;
+  published?: boolean;
+  features?: string[];
+};
+
 export type Project = {
   slug: string;
-  meta: {
-    [key: string]: any;
-  };
+  meta: ProjectMeta;
   content: string;
 };
 
@@ -20,8 +30,8 @@ export function getProjectSlugs() {
 }
 
 export function getProjectBySlug(slug: string) {
-  const realSlug = slug.replace(/\\.mdx$/, "");
-  const fullPath = path.join(projectsDirectory, `${realSlug}`);
+  const realSlug = slug.replace(/\.mdx$/, "");
+  const fullPath = path.join(projectsDirectory, `${realSlug}.mdx`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
   return {

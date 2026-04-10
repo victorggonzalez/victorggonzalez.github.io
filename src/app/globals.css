@@ -117,6 +117,52 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground min-h-screen;
+    background-image:
+      radial-gradient(circle at 12% 18%, rgba(46, 101, 255, 0.25), transparent 35%),
+      radial-gradient(circle at 82% 12%, rgba(12, 214, 255, 0.14), transparent 32%),
+      radial-gradient(circle at 50% 90%, rgba(93, 72, 255, 0.12), transparent 35%);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .site-shell {
+    @apply mx-auto w-full max-w-6xl px-6 pb-14 pt-8 md:px-10;
+  }
+
+  .frosted-card {
+    @apply rounded-2xl border border-white/10 bg-white/5 shadow-lg shadow-black/20 backdrop-blur-md;
+  }
+
+  .section-title {
+    @apply text-2xl font-semibold tracking-tight text-white md:text-3xl;
+  }
+
+  .section-subtitle {
+    @apply text-sm uppercase tracking-[0.24em] text-zinc-400;
+  }
+
+  .mdx-content h1,
+  .mdx-content h2,
+  .mdx-content h3 {
+    @apply font-semibold tracking-tight text-white;
+  }
+
+  .mdx-content h2 {
+    @apply text-lg;
+  }
+
+  .mdx-content h3 {
+    @apply text-lg;
+  }
+
+  .mdx-content p,
+  .mdx-content li {
+    @apply text-sm leading-relaxed text-zinc-300 md:text-base;
+  }
+
+  .mdx-content ul {
+    @apply list-disc space-y-2 pl-5;
   }
 }

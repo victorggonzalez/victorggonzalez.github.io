@@ -13,8 +13,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "VG",
-  description: "Victor Gonzalez personal portfolio",
+  title: {
+    default: "Victor Gonzalez | Full Stack Software Engineer",
+    template: "%s | Victor Gonzalez",
+  },
+  description:
+    "Personal portfolio of Victor Gonzalez, a Full Stack Software Engineer focused on high-impact product engineering and AI-powered systems.",
 };
 
 export default function RootLayout({
@@ -25,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
         {children}
       </body>

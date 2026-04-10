@@ -1,48 +1,60 @@
 "use client";
 import Link from "next/link";
 import { NavBar } from "@/components/NavBar";
-import { GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import {
+  EnvelopeClosedIcon,
+  GitHubLogoIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
 
 const socials = [
   {
     icon: <LinkedInLogoIcon />,
     href: "https://www.linkedin.com/in/victorgonzalezgonzalez/",
     label: "Linkedin",
-    handle: "in/victorgonzalezgonzalez",
   },
   {
     icon: <GitHubLogoIcon />,
     href: "https://github.com/victorggonzalez",
     label: "GitHub",
-    handle: "github.com/victorggonzalez",
+  },
+  {
+    icon: <EnvelopeClosedIcon />,
+    href: "mailto:victor.ggonzalez26@gmail.com",
+    label: "Email",
   },
 ];
 
 export default function Contact() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)] bg-gradient-to-tl from-zinc-900/0 via-zinc-900 to-zinc-900/0">
+    <div className="site-shell">
       <NavBar />
-      <main>
-        <div className="grid w-full grid-cols-1 gap-8 mx-auto mt-32 sm:mt-0 sm:grid-cols-2 lg:gap-16">
+      <main className="mt-10 space-y-8">
+        <section className="frosted-card p-8 md:p-10">
+          <p className="section-subtitle">Let&apos;s connect</p>
+          <h1 className="section-title mt-2">Open to impactful opportunities</h1>
+          <p className="mt-4 max-w-2xl text-zinc-300">
+            I&apos;m currently based in Copenhagen and available for software engineering opportunities where product,
+            quality, and AI-driven innovation matter.
+          </p>
+        </section>
+        <div className="grid w-full grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
           {socials.map((s, i) => (
             <div key={i}>
               <Link
                 href={s.href}
                 target="_blank"
-                className="p-4 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-24  lg:pb-48  md:p-16"
+                className="frosted-card p-8 relative flex flex-col items-center gap-4 duration-700 group md:gap-8 md:py-20 md:p-12"
               >
                 <span
-                  className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-500 via-zinc-500/50 to-transparent"
+                  className="absolute w-px h-2/3 bg-gradient-to-b from-zinc-300/60 via-zinc-400/40 to-transparent"
                   aria-hidden="true"
                 />
-                <span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-200 group-hover:text-white group-hover:bg-zinc-900 border-zinc-500 bg-zinc-900 group-hover:border-zinc-200 drop-shadow-orange">
+                <span className="relative z-10 flex items-center justify-center w-12 h-12 text-sm duration-1000 border rounded-full text-zinc-100 group-hover:text-white group-hover:bg-zinc-950 border-zinc-300/40 bg-zinc-900/60 group-hover:border-zinc-100">
                   {s.icon}
                 </span>{" "}
-                <div className="z-10 flex flex-col items-center">
-                  <span className="lg:text-xl font-medium duration-150 xl:text-3xl text-zinc-200 group-hover:text-white font-display">
-                    {s.handle}
-                  </span>
-                  <span className="mt-4 text-sm text-center duration-1000 text-zinc-400 group-hover:text-zinc-200">
+                <div className="z-10 flex w-full flex-col items-center">
+                  <span className="mt-1 text-base text-center font-medium duration-300 text-zinc-200 group-hover:text-white md:text-lg">
                     {s.label}
                   </span>
                 </div>
